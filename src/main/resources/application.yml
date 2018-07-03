@@ -1,0 +1,52 @@
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: streamMQ
+  datasource:
+     driver-class-name: com.mysql.jdbc.Driver
+     url: jdbc:mysql://ip:3306/hmilyylimh
+     username: username
+     password: password
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: myMQ
+          group: abd
+          binder: rabbit1
+#            brokers: rabbit3:15672
+#            zkNodes: rabbit1:15673
+
+#      rabbit:
+#        bindings:
+#          input:
+#            consumer:
+#              bindingRoutingKey: gold.a
+      binders:
+        rabbit1:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 172.19.162.223
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
+#        rabbit2:
+#          type: rabbit
+#          environment:
+#            spring:
+#              rabbitmq:
+#                host: 127.0.0.1
+#                port: 5676
+#                username: guest
+#                password: guest
+#                virtual-host: /
+
+
+
+
